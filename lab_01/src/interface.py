@@ -61,66 +61,64 @@ def draw():
     fig = pylab.figure(1)
     fig.clf()
 
-    plot1 = [[], []]
-    plot_theory1 = [[], []]
-    i = 0.001
-    while i < 0.103:
-        data = getModelingData( [1 / i, 0.05], [1 / 0.1, 0.5], 1000)
-        if data[1] > 0:
-            plot1[0].append(1 / data[1])
-        else:
-            plot1[0].append(1000000)
-        plot1[1].append(data[0])
-        
-        plot_theory1[0].append(i)
-        plot_theory1[1].append(data[0])
-        
-        if i < 0.09:
-            i += 0.01
-        else:
-            i += 0.001
-
-    pylab.subplot(2, 2, 1)
-    pylab.plot(plot_theory1[0], plot_theory1[1], color='red', label = 'теория')
-    pylab.plot(plot1[0], plot1[1], color='green', label = 'факт')
-    pylab.legend()
-    pylab.title("Tпреб(Iпост)")
-
-    plot2 = [[], []]
-    plot_theory2 = [[], []]
-    i = 0.098
-    while i < 10:
-        data = getModelingData([1 / 0.1, 0.5], [1 / i, 0.05], 1000)
-        #print("mx = {:10.3f}, int = {:6.6f}, t_hand = {:6.3f}, t_cr = {:6.3f}, z = {:6.3f}, tin = {:6.3f}".format(1 / i, i , data[2], data[1], data[2]/data[1], data[0]))
-        
-        plot2[0].append(1 / data[2])
-        plot2[1].append(data[0])
-
-        plot_theory2[0].append(i)
-        plot_theory2[1].append(data[0])
-        
-        if i < 0.1:
-            i += 0.0005
-        elif i < 0.2:
-            i += 0.001
-        elif i < 1:
-            i += 0.01
-        else:
-            i += 1
-
-    pylab.subplot(2, 2, 2)
-    pylab.plot(plot_theory2[0], plot_theory2[1], color='red', label = 'теория')
-    pylab.plot(plot2[0], plot2[1], color='green', label = 'факт')
-    pylab.legend()
-    pylab.title("Tпреб(Iобр)")
-
+##    plot1 = [[], []]
+##    plot_theory1 = [[], []]
+##    i = 0.001
+##    while i < 0.103:
+##        data = getModelingData( [1 / i, 0.05], [1 / 0.1, 0.5], 1000)
+##        if data[1] > 0:
+##            plot1[0].append(1 / data[1])
+##        else:
+##            plot1[0].append(1000000)
+##        plot1[1].append(data[0])
+##        
+##        plot_theory1[0].append(i)
+##        plot_theory1[1].append(data[0])
+##        
+##        if i < 0.09:
+##            i += 0.01
+##        else:
+##            i += 0.001
+##
+##    pylab.subplot(2, 2, 1)
+##    pylab.plot(plot_theory1[0], plot_theory1[1], color='red', label = 'теория')
+##    pylab.plot(plot1[0], plot1[1], color='green', label = 'факт')
+##    pylab.legend()
+##    pylab.title("Tпреб(Iпост)")
+##
+##    plot2 = [[], []]
+##    plot_theory2 = [[], []]
+##    i = 0.098
+##    while i < 1:
+##        data = getModelingData([1 / 0.1, 0.5], [1 / i, 0.05], 1000)
+##        #print("mx = {:10.3f}, int = {:6.6f}, t_hand = {:6.3f}, t_cr = {:6.3f}, z = {:6.3f}, tin = {:6.3f}".format(1 / i, i , data[2], data[1], data[2]/data[1], data[0]))
+##        
+##        plot2[0].append(1 / data[2])
+##        plot2[1].append(data[0])
+##
+##        plot_theory2[0].append(i)
+##        plot_theory2[1].append(data[0])
+##        
+##        if i < 0.2:
+##            i += 0.0005
+##        elif i < 1:
+##            i += 0.01
+##        else:
+##            i += 1
+##
+##    pylab.subplot(2, 2, 2)
+##    pylab.plot(plot_theory2[0], plot_theory2[1], color='red', label = 'теория')
+##    pylab.plot(plot2[0], plot2[1], color='green', label = 'факт')
+##    pylab.legend()
+##    pylab.title("Tпреб(Iобр)")
+##
     plot3 = [[], []]
     plot_theory3 = [[], []]
 
     #print()
     i = 0.098
     while i < 10:
-        data = getModelingData([1 / 0.1, 0.5], [1 / i, 0.05], 1000)
+        data = getModelingData([1 / 0.1, 0.5], [1 / i, 0.5], 1000)
         #print("mx = {:10.3f}, int = {:6.6f}, t_hand = {:6.3f}, t_cr = {:6.3f}, z = {:6.3f}, tin = {:6.3f}".format(1 / i, i , data[2], data[1], data[2]/data[1], data[0]))
         if data[1] > 0:
             plot3[0].append(data[2] / data[1])
@@ -140,7 +138,7 @@ def draw():
             i += 1
     plot3[0].append(0)
     plot3[1].append(0)
-    pylab.subplot(2, 2, 3)
+    pylab.subplot(1, 1, 1)
     pylab.plot(plot_theory3[0], plot_theory3[1], color='red', label = 'теория')
     pylab.plot(plot3[0], plot3[1], color='green', label = 'факт')
     pylab.legend()
